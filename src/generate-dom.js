@@ -14,7 +14,7 @@ module.exports = {
       podcasts.map(podcast =>
         crel(
           'div',
-          { onclick: event => this._onPodcastClick(podcast) },
+          { onclick: () => this._onPodcastClick(podcast) },
           crel('img', { src: podcast.image[0].url }),
           crel('p', podcast.title),
         )),
@@ -33,7 +33,7 @@ module.exports = {
         items.map(item =>
           crel(
             'li',
-            { onclick: event => this._onItemClick(item) },
+            { onclick: () => this._onItemClick(item) },
             crel('p', { class: 'item-title' }, item.title),
             ...this._createDescription(item.description[0]),
           )),
@@ -48,10 +48,14 @@ module.exports = {
         crel('p', { class: 'item-description' }, strings.slice(3).join(' ')),
         crel('p', { class: 'item-duration' }, strings[0]),
       ];
-      return [
-        crel('p', { class: 'item-description' }, description),
-      ];
     }
+    return [
+      crel('p', { class: 'item-description' }, description),
+    ];
+  },
+
+  _createInteraction(item) {
+
   },
 
   _onItemClick(item) {

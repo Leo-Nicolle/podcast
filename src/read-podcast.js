@@ -7,12 +7,13 @@ const parseString = require('xml2js').parseString;
 module.exports = {
 
   readPodcasts(urls, callback) {
-    urls.forEach(url => this.readPodcast(url, callback));
+    return urls.map(url => this.readPodcast(url, callback));
   },
   readPodcast(url, callback) {
-    request.get(url, { xml: true })
+    return request.get(url, { xml: true })
       .then((xml) => {
         parseString(xml, (err, result) => callback(result));
+        return Promise.resolve(1);
       });
   },
 };
