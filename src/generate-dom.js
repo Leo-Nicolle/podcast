@@ -21,32 +21,51 @@ module.exports = {
     );
   },
 
-  createItemList(items,options) {
-    while (this.itemsContainer.childElementCount) {
-      this.itemsContainer.removeChild(this.itemsContainer.firstChild);
-    }
-
+  createItemList(items) {
+    this._cleanItemsContainer();
     crel(
       this.itemsContainer,
-      crel(
-        'ul',
-        { class: 'item-list' },
-        items.map(item => this._createItemLi(item, options)
-      ),
+      this._createItemsUl(items),
     );
   },
 
-  _createItemLi(item, { displayPodcastImage = false, displayPodcastName = false, podcast = {} }) {
+  _createItemsUl(items) {
     return crel(
-      'li',
-      { onclick: () => this._onItemClick(item) },
-      this._createNameItem(displayPodcastName && podcast),
+      'ul',
+      { class: 'item-list' },
+      items.map(item =>
+        crel(
+          'li',
+          { onclick: () => this._onItemClick(item) },
+          crel('p', { class: 'item-title' }, item.title),
+          ...this._createDescription(item.description[0]),
+        )),
+    );
+  },
 
-      crel('p', { class: 'item-title' }, item.title),
-      this._createImageItem(displayPodcastImage && podcast),
-      ...this._createDescription(item.description[0]),
-    ))
-    .filter(elt => elt);
+  _createResultList(results) {
+    this._cleanItemsContainer();
+
+    crel(
+      this.itemsContainer,
+      results.map(({ podcast, items }) =>
+        crel(
+          'div',
+          crel(
+            'div',
+            crel('img', { src: podcast.image[0].url }),
+            crel('p', { class: 'podcast-name' }, `${podcast.title} (${items.length} résultats)`),
+          ),
+          crel('ul'),
+          this._createItemsUl(items),
+        )),
+    );
+  },
+
+  _cleanItemsContainer() {
+    while (this.itemsContainer.childElementCount) {
+      this.itemsContainer.removeChild(this.itemsContainer.firstChild);
+    }
   },
 
   _createDescription(description) {
@@ -61,18 +80,6 @@ module.exports = {
     return [
       crel('p', { class: 'item-description' }, description),
     ];
-  },
-
-  _createImageItem(podcast) {
-    return podcast && crel('img', {
-      src: podcast.image[0].url,
-    });
-  },
-
-  _createNameItem(podcast) {
-    return podcast && crel('p', {
-      class: 'item-podcast-name',
-    }, podcast.title);
   },
 
   _createInteraction(item) {
