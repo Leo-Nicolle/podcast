@@ -1,0 +1,21 @@
+{
+  "extends": "airbnb",
+  "rules": {
+      "no-param-reassign" : OFF,
+      "func-names" : OFF,
+      "no-console" : OFF,
+      "no-plusplus" : OFF,
+      "no-nested-ternary" : OFF,
+      "no-underscore-dangle" : OFF,
+      "no-mixed-operators": OFF,
+      "prefer-destructuring": OFF,
+      "no-continue": OFF
+  },
+
+  "globals": {
+    "window": true,
+    "document": true,
+
+    "requestAnimationFrame" : true
+  }
+}

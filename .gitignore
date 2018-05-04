@@ -1,0 +1,5 @@
+xml-podcasts/*
+node_modules/
+dist/
+svgs/
+package-lock.json
