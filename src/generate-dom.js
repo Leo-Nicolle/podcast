@@ -21,25 +21,34 @@ module.exports = {
     );
   },
 
-  createItemList(items) {
+  createItemList(items,options) {
     while (this.itemsContainer.childElementCount) {
       this.itemsContainer.removeChild(this.itemsContainer.firstChild);
     }
+
     crel(
       this.itemsContainer,
       crel(
         'ul',
         { class: 'item-list' },
-        items.map(item =>
-          crel(
-            'li',
-            { onclick: () => this._onItemClick(item) },
-            crel('p', { class: 'item-title' }, item.title),
-            ...this._createDescription(item.description[0]),
-          )),
+        items.map(item => this._createItemLi(item, options)
       ),
     );
   },
+
+  _createItemLi(item, { displayPodcastImage = false, displayPodcastName = false, podcast = {} }) {
+    return crel(
+      'li',
+      { onclick: () => this._onItemClick(item) },
+      this._createNameItem(displayPodcastName && podcast),
+
+      crel('p', { class: 'item-title' }, item.title),
+      this._createImageItem(displayPodcastImage && podcast),
+      ...this._createDescription(item.description[0]),
+    ))
+    .filter(elt => elt);
+  },
+
   _createDescription(description) {
     if (!description) return [];
     const strings = description.split('-');
@@ -52,6 +61,18 @@ module.exports = {
     return [
       crel('p', { class: 'item-description' }, description),
     ];
+  },
+
+  _createImageItem(podcast) {
+    return podcast && crel('img', {
+      src: podcast.image[0].url,
+    });
+  },
+
+  _createNameItem(podcast) {
+    return podcast && crel('p', {
+      class: 'item-podcast-name',
+    }, podcast.title);
   },
 
   _createInteraction(item) {
