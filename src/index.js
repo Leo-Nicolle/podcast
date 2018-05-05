@@ -1,7 +1,20 @@
+import MediaPlayer from 'mediaplayer';
+
 const readPodcast = require('./read-podcast');
 
 const generateDom = require('./generate-dom');
 const query = require('./query');
+const TWEEN = require('@tweenjs/tween.js');
+
+
+function animate(time) {
+  requestAnimationFrame(animate);
+  TWEEN.update(time);
+}
+animate();
+
+// get target from media with controls
+const $target = document.querySelector('audio[controls], video[controls]');
 
 const allRss = [];
 

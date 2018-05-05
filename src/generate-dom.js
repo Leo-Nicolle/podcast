@@ -1,12 +1,18 @@
 'use-strict';
 
 const crel = require('crel');
+const TWEEN = require('@tweenjs/tween.js');
 
+window.TWEEN = TWEEN;
+window.itemsContainer = document.getElementById('items-container');
+const values = { height: 100 };
 module.exports = {
 
   itemsContainer: document.getElementById('items-container'),
   podcastsContainer: document.getElementById('podcasts-container'),
   podcastPlayer: document.getElementById('podcast-player'),
+  trackTitle: document.getElementById('track-title'),
+
 
   createPodcastList(podcasts) {
     crel(
@@ -22,7 +28,7 @@ module.exports = {
   },
 
   createItemList(items) {
-    this._cleanItemsContainer();
+    this._cleanContainer(this.itemsContainer);
     crel(
       this.itemsContainer,
       this._createItemsUl(items),
@@ -30,13 +36,14 @@ module.exports = {
   },
 
   _createItemsUl(items) {
+    values.height = 1;
+
     return crel(
       'ul',
       { class: 'item-list' },
       items.map(item =>
         crel(
           'li',
-          // { onclick: () => this._onItemClick(item) },
           crel('p', { class: 'item-title' }, item.title),
           ...this._createDescription(item.description[0]),
           this._createInteraction(item),
@@ -45,8 +52,11 @@ module.exports = {
   },
 
   _createResultList(results) {
-    this._cleanItemsContainer();
+    if (!this.itemsContainer.childElementCount) {
+      this._animate(true, this.itemsContainer);
+    }
 
+    this._cleanContainer(this.itemsContainer);
     crel(
       this.itemsContainer,
       results.map(({ podcast, items }) =>
@@ -63,9 +73,10 @@ module.exports = {
     );
   },
 
-  _cleanItemsContainer() {
-    while (this.itemsContainer.childElementCount) {
-      this.itemsContainer.removeChild(this.itemsContainer.firstChild);
+  _cleanContainer(container) {
+    if (!container) return;
+    while (container.childElementCount) {
+      container.removeChild(this.itemsContainer.firstChild);
     }
   },
 
@@ -101,8 +112,13 @@ module.exports = {
 
   _onItemPlayClick(item) {
     this.podcastPlayer.pause();
-    this.podcastPlayer.src = item.guid;
+    this._cleanContainer(this.podcastPlayer);
+    crel(this.podcastPlayer, crel(
+      'source',
+      { src: item.guid },
+    ));
     this.podcastPlayer.play();
+    this.trackTitle.innerText = item.title;
   },
 
   _onItemSeeClick(item) {
@@ -110,7 +126,33 @@ module.exports = {
   },
 
   _onPodcastClick(podcast) {
+    if (this.itemsContainer.childElementCount === 0) {
+      this._animate(true, this.itemsContainer);
+    }
     this.createItemList(podcast.item);
   },
+
+  _animate(expand, element) {
+    if (expand) {
+      values.height = 0;
+      new TWEEN.Tween(values)
+        .to({ height: 100 }, 2000)
+        .easing(TWEEN.Easing.Cubic.Out)
+        .onUpdate(() => {
+          element.style.height = `${values.height}%`;
+        })
+        .start();
+    } else {
+      values.height = 100;
+      new TWEEN.Tween(values)
+        .to({ height: 0 }, 2000)
+        .easing(TWEEN.Easing.Cubic.Out)
+        .onUpdate(() => {
+          element.style.height = `${values.height}%`;
+        })
+        .start();
+    }
+  },
+
 
 };

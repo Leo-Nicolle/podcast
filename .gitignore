@@ -1,5 +1,5 @@
 xml-podcasts/*
 node_modules/
-dist/
+dist/bundle.js
 svgs/
 package-lock.json
