@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "generate-font": "icon-font-generator svg/*.svg -o font && cp font/icons.ttf dist/icons.ttf && cp font/icons.css dist/icons.css",
     "watch": "webpack --watch"
   },
   "author": "",
@@ -11,6 +12,7 @@
   "dependencies": {
     "autogypi": "^0.2.2",
     "crel": "^3.1.0",
+    "icon-font-generator": "^2.1.7",
     "json-query": "^2.2.2",
     "mediaplayer": "^1.1.0",
     "query-json": "^2.0.1",

@@ -1,4 +1,3 @@
-const queryJson = require('query-json');
 const generateDom = require('./generate-dom');
 
 module.exports = {

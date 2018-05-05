@@ -36,9 +36,10 @@ module.exports = {
       items.map(item =>
         crel(
           'li',
-          { onclick: () => this._onItemClick(item) },
+          // { onclick: () => this._onItemClick(item) },
           crel('p', { class: 'item-title' }, item.title),
           ...this._createDescription(item.description[0]),
+          this._createInteraction(item),
         )),
     );
   },
@@ -83,12 +84,29 @@ module.exports = {
   },
 
   _createInteraction(item) {
-
+    return crel(
+      'div',
+      { class: 'item-button-container' },
+      this._createButton(item, 'icon-play', this._onItemPlayClick),
+      this._createButton(item, 'icon-see', this._onItemSeeClick),
+    );
   },
 
-  _onItemClick(item) {
+  _createButton(item, icon, onclick) {
+    return crel(
+      'button', { onclick: onclick.bind(this, item) },
+      crel('i', { class: icon }),
+    );
+  },
+
+  _onItemPlayClick(item) {
+    this.podcastPlayer.pause();
     this.podcastPlayer.src = item.guid;
     this.podcastPlayer.play();
+  },
+
+  _onItemSeeClick(item) {
+
   },
 
   _onPodcastClick(podcast) {

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>icons</title>
+    <style>
+
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .preview {
+            width: 100px;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .preview .inner {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            background: #f5f5f5;
+            -webkit-border-radius: 3px 3px 0 0;
+            -moz-border-radius: 3px 3px 0 0;
+            border-radius: 3px 3px 0 0;
+        }
+
+        .preview .inner i {
+            line-height: 85px;
+            font-size: 40px;
+            color: #333;
+        }
+
+        .label {
+            display: inline-block;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 5px;
+            font-size: 10px;
+            font-family: Monaco, monospace;
+            color: #666;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            background: #ddd;
+            -webkit-border-radius: 0 0 3px 3px;
+            -moz-border-radius: 0 0 3px 3px;
+            border-radius: 0 0 3px 3px;
+            color: #666;
+        }
+
+        @font-face {
+    font-family: "icons";
+    src: url("./icons.eot?73e4886da0f90b457032f297ace63103?#iefix") format("embedded-opentype"),
+url("./icons.woff2?73e4886da0f90b457032f297ace63103") format("woff2"),
+url("./icons.woff?73e4886da0f90b457032f297ace63103") format("woff"),
+url("./icons.ttf?73e4886da0f90b457032f297ace63103") format("truetype"),
+url("./icons.svg?73e4886da0f90b457032f297ace63103#icons") format("svg");
+}
+
+i {
+    line-height: 1;
+}
+
+i[class^="icon-"]:before, i[class*=" icon-"]:before {
+    font-family: icons !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-mute:before {
+    content: "\f101";
+}
+.icon-pause:before {
+    content: "\f102";
+}
+.icon-play:before {
+    content: "\f103";
+}
+.icon-search:before {
+    content: "\f104";
+}
+.icon-see:before {
+    content: "\f105";
+}
+.icon-sound:before {
+    content: "\f106";
+}
+.icon-volume:before {
+    content: "\f107";
+}
+
+
+    </style>
+</head>
+<body>
+
+    <h1>icons</h1>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="icon-mute"></i>
+            </span>
+            <br>
+            <span class='label'>mute</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="icon-pause"></i>
+            </span>
+            <br>
+            <span class='label'>pause</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="icon-play"></i>
+            </span>
+            <br>
+            <span class='label'>play</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="icon-search"></i>
+            </span>
+            <br>
+            <span class='label'>search</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="icon-see"></i>
+            </span>
+            <br>
+            <span class='label'>see</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="icon-sound"></i>
+            </span>
+            <br>
+            <span class='label'>sound</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="icon-volume"></i>
+            </span>
+            <br>
+            <span class='label'>volume</span>
+        </div>
+
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" standalone="no"?> 
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<svg xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <font id="icons" horiz-adv-x="24">
+    <font-face font-family="icons"
+      units-per-em="24" ascent="24"
+      descent="0" />
+    <missing-glyph horiz-adv-x="0" />
+    <glyph glyph-name="mute"
+      unicode="&#xF101;"
+      horiz-adv-x="24" d=" M3 15V9H2V15H3zM16 22L7 17V14.712L14 18.601V5.399L7 9.288V7L16 2V22zM5 17H0V7H5V17zM22.324 12.007L23.97 13.666L22.646 14.99L20.995 13.32L19.33 14.968L18.014 13.65L19.684 11.993L18.034 10.324L19.352 9.007L21.01 10.679L22.676 9.026L24 10.351L22.324 12.007z" />
+    <glyph glyph-name="pause"
+      unicode="&#xF102;"
+      horiz-adv-x="24" d=" M18 22V2H16V22H18zM8 22V2H6V22H8zM20 24H14V0H20V24zM10 24H4V0H10V24z" />
+    <glyph glyph-name="play"
+      unicode="&#xF103;"
+      horiz-adv-x="24" d=" M4 20.468L18.113 12L4 3.532V20.468zM2 24V0L22 12L2 24z" />
+    <glyph glyph-name="search"
+      unicode="&#xF104;"
+      horiz-adv-x="24" d=" M21.172 0L13.785 7.387C12.397 6.513 10.761 6 9 6C4.029 6 0 10.029 0 15S4.029 24 9 24S18 19.971 18 15C18 13.239 17.486 11.602 16.613 10.215L24 2.828L21.172 0zM9 8C12.859 8 16 11.14 16 15S12.859 22 9 22S2 18.86 2 15S5.141 8 9 8z" />
+    <glyph glyph-name="see"
+      unicode="&#xF105;"
+      horiz-adv-x="24" d=" M12.015 17C16.766 17 20.078 13.988 21.519 12.364C20.118 10.527 16.806 7 12.015 7C7.595 7 4.085 10.536 2.537 12.407C4.03 14.054 7.354 17 12.015 17zM12.015 19C4.446 19 0 12.449 0 12.449S4.835 5 12.015 5C19.748 5 24 12.449 24 12.449S19.709 19 12.015 19zM12 14C13.103 14 14 13.103 14 12S13.103 10 12 10S10 10.897 10 12S10.897 14 12 14zM12 16C9.791 16 8 14.208 8 12C8 9.791 9.791 8 12 8S16 9.791 16 12C16 14.208 14.209 16 12 16z" />
+    <glyph glyph-name="sound"
+      unicode="&#xF106;"
+      horiz-adv-x="24" d=" M1 11H0V12H1V11zM23 12H22V11H23V12zM3 13H2V10H3V13zM21 13H20V10H21V13zM7 13H6V10H7V13zM17 14H16V9H17V14zM5 14H4V9H5V14zM19 15H18V8H19V15zM9 15H8V8H9V15zM11 17H10V7H11V17zM15 17H14V7H15V17zM13 19H12V5H13V19z" />
+    <glyph glyph-name="volume"
+      unicode="&#xF107;"
+      horiz-adv-x="24" d=" M3 15V9H2V15H3zM16 22L7 17V14.712L14 18.601V5.399L7 9.288V7L16 2V22zM22.416 19.232L18.084 16.732L19.084 15L23.416 17.5L22.416 19.232zM5 17H0V7H5V17zM24 13H19V11H24V13zM19.084 9L18.084 7.268L22.416 4.768L23.416 6.5L19.084 9z" />
+  </font>
+</defs>
+</svg>
