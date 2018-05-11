@@ -1,7 +1,7 @@
 'use-strict';
 
 const crel = require('crel');
-const domHelper = require('../dom-helper');
+const domHelper = require('../helpers/dom-helper');
 
 class PlayerView {
   constructor() {

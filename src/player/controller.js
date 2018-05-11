@@ -1,10 +1,11 @@
 'use-strict';
 
 const PlayerView = require('./view');
+const dataHelper = require('../helpers/data-helper');
 
 class Player {
   constructor(mainview) {
-    mainview.on('play-item', item => this._onPlayItem(item));
+    // mainview.on('play-item', (...item) => constole.log()this._onPlayItem(item));
     this.podcastPlayer = document.getElementById('podcast-player');
     this.trackTitle = document.getElementById('track-title');
     this.podcastPlayer.addEventListener('timeupdate', () => this._onTimeUpdate());
@@ -13,13 +14,9 @@ class Player {
 
   _onPlayItem(item) {
     this.podcastPlayer.pause();
-    if (!item._podcastData) {
-      item._podcastData = {
-        currentTime: 0,
-      };
-    }
+
     this.item = item;
-    this.podcastPlayer.currentTime = item._podcastData.currentTime;
+    this.podcastPlayer.currentTime = dataHelper.get(item, 'currentTime');
     this.podcastPlayer.play();
     this.playerView._onPlayItem(item);
   }
@@ -27,8 +24,9 @@ class Player {
   _onTimeUpdate() {
     if (!this.item) return;
     const current = this.podcastPlayer.currentTime;
-    if (Math.abs(current - this.item._podcastData.currentTime) < 5) return;
+    if (Math.abs(current - dataHelper.get(this.item, 'currentTime')) < 5) return;
     this.item._podcastData.currentTime = current;
+    dataHelper.set(this.item, 'currentTime', current);
   }
 }
 

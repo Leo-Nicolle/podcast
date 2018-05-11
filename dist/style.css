@@ -34,6 +34,10 @@ button:active{
   border:none;
 }
 
+button.seen {
+  background-color: #008800;
+}
+
 div#podcasts-container  {
   max-width: 100% ;
 }
