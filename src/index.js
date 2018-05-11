@@ -1,9 +1,7 @@
-import MediaPlayer from 'mediaplayer';
-
 const readPodcast = require('./read-podcast');
+const Player = require('./player/controller');
+const MainPage = require('./mainpage/controller');
 
-const generateDom = require('./generate-dom');
-const query = require('./query');
 const TWEEN = require('@tweenjs/tween.js');
 
 
@@ -13,13 +11,7 @@ function animate(time) {
 }
 animate();
 
-// get target from media with controls
-const $target = document.querySelector('audio[controls], video[controls]');
-
 const allRss = [];
-
-window.query = query;
-
 Promise.all(readPodcast.readPodcasts(
   [
     'http://localhost:3000/xml-podcasts/file.xml',
@@ -32,8 +24,6 @@ Promise.all(readPodcast.readPodcasts(
     allRss.push(rss);
   }),
 )).then(() => {
-  query.init(allRss);
-  allRss.forEach((rss) => {
-    generateDom.createPodcastList([rss.rss.channel[0]]);
-  });
+  const mainPage = new MainPage(allRss);
+  const player = new Player(mainPage.view);
 });
